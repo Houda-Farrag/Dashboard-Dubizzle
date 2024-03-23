@@ -13,7 +13,7 @@ import { BaseChartDirective } from 'ng2-charts';
   styleUrl: './app.component.scss'
 })
 export class AppComponent implements OnInit {
-  title = 'project-test';
+  title = 'Dashboard-Dubizzle';
   ngOnInit(): void {
     initFlowbite();
   }
