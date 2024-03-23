@@ -10,6 +10,7 @@ import { CategoriesServiceService } from '../../Services/Categories/categories-s
 })
 export class CategoryComponent {
   CategoryData: any
+
   constructor(private categoryService: CategoriesServiceService) {
     categoryService.getAllCategories().subscribe((data) => {
       this.CategoryData = data

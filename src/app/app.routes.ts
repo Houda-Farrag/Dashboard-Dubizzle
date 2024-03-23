@@ -5,14 +5,17 @@ import { CategoryComponent } from '../Pages/category/category.component';
 import { SubCategoryComponent } from '../Pages/sub-category/sub-category.component';
 import { AboutComponent } from '../Pages/about/about.component';
 import { NotFoundComponent } from '../Pages/not-found/not-found.component';
+import { ChartsComponentComponent } from './Components/charts-component/charts-component.component';
 
 export const routes: Routes = [
     { path: '', redirectTo: 'home', pathMatch: 'full' },
     {
         path: 'home', component: HomeComponent, children: [
+
             { path: 'users', component: UsersComponent },
             { path: 'category', component: CategoryComponent },
             { path: 'sub-category', component: SubCategoryComponent },
+            { path: 'charts', component: ChartsComponentComponent },
 
         ]
     },
