@@ -35,15 +35,12 @@
                         name
                     </th>
                     <th scope="col" class="px-6 py-3">
-                        Id
+                        date
                     </th>
 
-                    <!-- <th scope="col" class="px-6 py-3">
-                                    Price
-                                </th>
-                                <th scope="col" class="px-6 py-3">
-                                    Action
-                                </th> -->
+                    <th scope="col" class="px-6 py-3">
+                        seller Id
+                    </th>
                 </tr>
 
             </thead>
@@ -52,13 +49,21 @@
 
                 @for (product of products; track $index) {
                 <tr class="border">
-                    <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                        {{product.name}}
+                    <th scope="row "
+                        class=" min-w-28 max-w-80 px-2  py-2 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                        <p class=" overflow-clip text-wrap cursor-pointer" title={{product.name}}>
+                            <button (click)="print(product._id)">
+                                {{product.name}}
+                            </button>
+
+                        </p>
                     </th>
                     <td class="px-6 py-4">
-                        {{product._id}}
+                        {{product.createdAt | date}}
                     </td>
-
+                    <td class="px-6 py-4">
+                        {{product.sellerData}}
+                    </td>
                 </tr>
                 }
 
