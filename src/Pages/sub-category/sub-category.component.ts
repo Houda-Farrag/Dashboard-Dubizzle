@@ -11,7 +11,7 @@ import { SubCategoriesServiceService } from '../../Services/Sub-Categories/sub-c
 export class SubCategoryComponent {
   subCategoryData: any
   constructor(private subCategoryService: SubCategoriesServiceService) {
-    this.subCategoryService.getAllCategories().subscribe((data) => {
+    this.subCategoryService.getAllSubCategories().subscribe((data) => {
       console.log(data)
       this.subCategoryData = data
     })

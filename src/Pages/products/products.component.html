@@ -1,4 +1,4 @@
-@if (!users) {
+@if (!products) {
 <div class="h-full grid justify-center items-center">
 
     <div>
@@ -35,40 +35,30 @@
                         name
                     </th>
                     <th scope="col" class="px-6 py-3">
-                        email
+                        Id
                     </th>
 
                     <!-- <th scope="col" class="px-6 py-3">
-                        Price
-                    </th>
-                    <th scope="col" class="px-6 py-3">
-                        Action
-                    </th> -->
+                                    Price
+                                </th>
+                                <th scope="col" class="px-6 py-3">
+                                    Action
+                                </th> -->
                 </tr>
 
             </thead>
 
             <tbody>
 
-                @for (user of users; track $index) {
+                @for (product of products; track $index) {
                 <tr class="border">
                     <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                        {{user.profile.name}}
+                        {{product.name}}
                     </th>
                     <td class="px-6 py-4">
-                        {{user.email}}
+                        {{product._id}}
                     </td>
-                    <td class="px-6 py-4 grid grid-flow-row gap-1">
-                        <button>delete</button>
 
-                        <button>details</button>
-                    </td>
-                    <!-- <td class="px-6 py-4">
-                        $999
-                    </td>
-                    <td class="px-6 py-4">
-                        <a href="#" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Edit</a>
-                    </td> -->
                 </tr>
                 }
 

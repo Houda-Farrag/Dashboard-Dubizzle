@@ -10,7 +10,7 @@ import { RouterModule, RouterOutlet } from '@angular/router';
 })
 export class HeaderComponent {
 
-  items = ["users", "category", "sub-category", "properties",]
+  items = ["users", "category", "sub-category", "properties", "products"]
 
   open1: boolean = true
   constructor() {

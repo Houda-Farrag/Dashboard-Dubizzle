@@ -11,7 +11,11 @@ export class UsersService {
   constructor(private httpclient: HttpClient) {
 
   }
+
   getAllUsers(): Observable<[User]> {
     return this.httpclient.get<[User]>("http://localhost:3000/users")
   }
+
+
+
 }
