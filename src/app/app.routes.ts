@@ -22,6 +22,5 @@ export const routes: Routes = [
     { path: 'signin', component: SignInComponent },
     { path: 'product-details/:idprod', component: ProductDetailsComponent },
 
-
     { path: '**', component: NotFoundComponent },
 ];
