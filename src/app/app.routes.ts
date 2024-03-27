@@ -10,6 +10,7 @@ import { PropertiesComponent } from '../Pages/properties/properties.component';
 import { SignInComponent } from '../Pages/sign-in/sign-in.component';
 import { ProductsComponent } from '../Pages/products/products.component';
 import { ProductDetailsComponent } from '../Pages/product-details/product-details.component';
+import { UserDetailsComponent } from '../Pages/user-details/user-details.component';
 
 export const routes: Routes = [
     { path: '', redirectTo: 'home', pathMatch: 'full' },
@@ -21,6 +22,7 @@ export const routes: Routes = [
     { path: 'products', component: ProductsComponent },
     { path: 'signin', component: SignInComponent },
     { path: 'product-details/:idprod', component: ProductDetailsComponent },
+    { path: 'user-details/:iduser', component: UserDetailsComponent },
 
     { path: '**', component: NotFoundComponent },
 ];

@@ -1,5 +1,5 @@
 export interface User {
-
+    _id: string
     email: String,
     password: String,
     refreshToken: String

@@ -5,15 +5,18 @@ import { UsersService } from '../../Services/UserService/users.service';
 import { CategoriesServiceService } from '../../Services/Categories/categories-service.service';
 import { SubCategoriesServiceService } from '../../Services/Sub-Categories/sub-categories-service.service';
 import { ProductsService } from '../../Services/Products/products.service';
+import { ProductChartsComponent } from '../../app/Components/product-charts/product-charts.component';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'home',
   standalone: true,
-  imports: [RouterModule, ChartsComponentComponent],
+  imports: [RouterModule, ChartsComponentComponent, ProductChartsComponent, CommonModule],
   templateUrl: './home.component.html',
   styleUrl: './home.component.sass'
 })
 export class HomeComponent {
+  togle = false
   usersNum: any
   CategoryNum: any
   subCategoryNum: any
@@ -23,7 +26,6 @@ export class HomeComponent {
     private categoryService: CategoriesServiceService,
     private subCategoryService: SubCategoriesServiceService,
     private productsService: ProductsService) {
-
 
     this.usersNum = this.userService.getAllUsers().subscribe((data) => {
       this.usersNum = data.length
@@ -39,6 +41,11 @@ export class HomeComponent {
     this.productsService.getAllProducts().subscribe((data) => {
       this.productsNum = data.length
     })
+  }
+
+  togleButton(event: Event) {
+    event.stopPropagation();
+    console.log('clicked')
   }
 
 }

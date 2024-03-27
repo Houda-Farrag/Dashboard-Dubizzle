@@ -8,6 +8,7 @@ import { Isubcategory } from '../../app/Models/isubcategory';
 })
 export class SubCategoriesServiceService {
 
+  nameCategory = ["Cars", "mobiles", "electronic"]
   constructor(private httpclient: HttpClient) {
 
   }

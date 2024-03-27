@@ -18,7 +18,6 @@ export class ProductDetailsComponent {
     this.activateRouter.params.subscribe((data) => {
       this.idProduct = data
 
-
       this.productService.getProductByID(this.idProduct.idprod).subscribe((data) => {
         let prod: any = data
         this.product = prod.product
