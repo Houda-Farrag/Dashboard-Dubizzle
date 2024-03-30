@@ -7,20 +7,22 @@ import { SubCategoriesServiceService } from '../../Services/Sub-Categories/sub-c
 import { ProductsService } from '../../Services/Products/products.service';
 import { ProductChartsComponent } from '../../app/Components/product-charts/product-charts.component';
 import { CommonModule } from '@angular/common';
+import { Charts3DComponent } from '../../app/Components/charts3-d/charts3-d.component';
 
 @Component({
   selector: 'home',
   standalone: true,
-  imports: [RouterModule, ChartsComponentComponent, ProductChartsComponent, CommonModule],
+  imports: [RouterModule, ChartsComponentComponent, ProductChartsComponent, CommonModule, Charts3DComponent],
   templateUrl: './home.component.html',
   styleUrl: './home.component.sass'
 })
 export class HomeComponent {
   togle = false
-  usersNum: any
-  CategoryNum: any
-  subCategoryNum: any
-  productsNum: any
+  usersNum: any = ""
+  CategoryNum: any = ""
+  subCategoryNum: any = ""
+  productsNum: any = ""
+
   constructor(
     private userService: UsersService,
     private categoryService: CategoriesServiceService,
@@ -36,11 +38,16 @@ export class HomeComponent {
     })
 
     this.subCategoryService.getAllSubCategories().subscribe((data) => {
+
       this.subCategoryNum = data.length
+
     })
     this.productsService.getAllProducts().subscribe((data) => {
       this.productsNum = data.length
     })
+
+
+
   }
 
   togleButton(event: Event) {

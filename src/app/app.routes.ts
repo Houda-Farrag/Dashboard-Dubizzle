@@ -11,6 +11,8 @@ import { SignInComponent } from '../Pages/sign-in/sign-in.component';
 import { ProductsComponent } from '../Pages/products/products.component';
 import { ProductDetailsComponent } from '../Pages/product-details/product-details.component';
 import { UserDetailsComponent } from '../Pages/user-details/user-details.component';
+import { UpdateUserComponent } from '../Pages/update-user/update-user.component';
+import { UpdateProductComponent } from '../Pages/update-product/update-product.component';
 
 export const routes: Routes = [
     { path: '', redirectTo: 'home', pathMatch: 'full' },
@@ -23,6 +25,10 @@ export const routes: Routes = [
     { path: 'signin', component: SignInComponent },
     { path: 'product-details/:idprod', component: ProductDetailsComponent },
     { path: 'user-details/:iduser', component: UserDetailsComponent },
+    { path: 'product-details/:idprod', component: ProductDetailsComponent },
+    { path: 'user-details/:iduser', component: UserDetailsComponent },
+    { path: 'user-update/:iduser', component: UpdateUserComponent },
+    { path: 'product-update/:idprod', component: UpdateProductComponent },
 
     { path: '**', component: NotFoundComponent },
 ];

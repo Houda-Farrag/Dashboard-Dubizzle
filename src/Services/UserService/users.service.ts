@@ -2,6 +2,8 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, Observer } from 'rxjs';
 import { User } from '../../app/Models/user';
+import { SubCategoriesServiceService } from '../Sub-Categories/sub-categories-service.service';
+import { Isubcategory } from '../../app/Models/isubcategory';
 
 @Injectable({
   providedIn: 'root'
@@ -9,18 +11,16 @@ import { User } from '../../app/Models/user';
 export class UsersService {
 
   usersData!: User[]
+
   constructor(private httpclient: HttpClient) {
     this.getAllUsers().subscribe((Data) => {
       this.usersData = Data
     })
+
   }
 
   deleteUserById(id: string) {
-    console.log(
-      "you want to delete this user with id " + id
-    )
-    alert("deleted user id => " + id)
-    // return this.httpclient.delete("http://localhost:3000/users/" + id)
+    return this.httpclient.delete("http://localhost:3000/users/" + id)
   }
 
   addUser(user: User) {

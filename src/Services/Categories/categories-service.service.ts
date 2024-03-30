@@ -1,13 +1,14 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Icategory } from '../../app/Models/icategory';
-import { Observable } from 'rxjs';
+import { BehaviorSubject, Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class CategoriesServiceService {
 
+  quote = new BehaviorSubject<string>('Hello world');
   constructor(private httpclient: HttpClient) {
 
   }

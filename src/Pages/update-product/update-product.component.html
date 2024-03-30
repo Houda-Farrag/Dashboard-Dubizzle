@@ -1,0 +1,8 @@
+<form [formGroup]="productForm" (ngSubmit)="updateProduct()">
+    <input formControlName="name" [value]="product!.name">
+    <input formControlName="description" placeholder="Product Description">
+    <input formControlName="price" placeholder="Product Price">
+    <!-- Add other form fields for other properties -->
+
+    <button type="submit">Update Product</button>
+</form>
