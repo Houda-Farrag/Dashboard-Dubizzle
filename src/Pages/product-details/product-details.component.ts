@@ -24,6 +24,7 @@ export class ProductDetailsComponent {
 
         let prod: any = data
         this.product = prod.product
+        console.log(this.product)
 
         this.subCatService.SubcategoryBehavoior.subscribe(value => {
           let [Name] = value.filter(sub => { return sub._id == this.product.subCategoryId })
