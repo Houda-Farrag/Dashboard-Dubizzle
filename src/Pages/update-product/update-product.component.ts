@@ -3,35 +3,49 @@ import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators } 
 import { ProductsService } from '../../Services/Products/products.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Iproduct } from '../../app/Models/iproduct';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-update-product',
   standalone: true,
-  imports: [FormsModule, ReactiveFormsModule],
+  imports: [FormsModule, ReactiveFormsModule, CommonModule],
   templateUrl: './update-product.component.html',
   styleUrl: './update-product.component.scss'
 })
 export class UpdateProductComponent implements OnInit {
   productForm !: FormGroup;
   productId!: string;
-  product!: Iproduct;
+  product: Iproduct;
 
   constructor(private formBuilder: FormBuilder,
     private productService: ProductsService,
     private route: ActivatedRoute,
     private router: Router) {
+
     this.route.paramMap.subscribe(params => {
       this.productId = params.get('idprod') || '0'
     });
-    console.log(this.productService.getProductWithID(this.productId));
+
+    let data: any = this.productService.getProductWithID(this.productId)
+    this.product = data
 
   }
+
   ngOnInit(): void {
+
     this.productForm = this.formBuilder.group({
-      name: ['', Validators.required],
-      description: ['', Validators.required],
-      price: ['', Validators.required],
-      // Add other form controls for other product properties
+      name: [`${this.product.name}`, Validators.required],
+      description: [`${this.product.description}`, Validators.required],
+      price: [`${this.product.price}`, Validators.required],
+      price_type: [`${this.product.price_type}`, Validators.required],
+      location: [`${this.product.location}`, Validators.required],
+      propertyType: [`${this.product.propertyType}`, Validators.required],
+      area: [`${this.product.area}`, Validators.required],
+      phoneNumber: [`${this.product.phoneNumber}`, Validators.required],
+      model: [`${this.product.model}`, Validators.required],
+      bedRooms: [`${this.product.bedRooms}`, Validators.required],
+      bathRooms: [`${this.product.bathRooms}`, Validators.required],
+
     });
 
   }
@@ -44,4 +58,12 @@ export class UpdateProductComponent implements OnInit {
       });
     }
   }
+
+
+  onSubmit() {
+    console.log(this.product)
+  }
+
+
+
 }

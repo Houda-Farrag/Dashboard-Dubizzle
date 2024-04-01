@@ -1,8 +1,95 @@
-<form [formGroup]="productForm" (ngSubmit)="updateProduct()">
-    <input formControlName="name" [value]="product!.name">
-    <input formControlName="description" placeholder="Product Description">
-    <input formControlName="price" placeholder="Product Price">
-    <!-- Add other form fields for other properties -->
+<form (ngSubmit)="onSubmit()" [formGroup]="productForm" class="border p-4">
 
-    <button type="submit">Update Product</button>
+    <div class="mb-3">
+        <label for="name"
+            class="form-label block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">Name</label>
+        <input type="text" id="name" name="name" formControlName="name"
+            class="shadow-sm min-h-max  text-wrap  bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5">
+    </div>
+    <div class="mb-3">
+        <label for="name"
+            class="form-label block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">description</label>
+        <textarea id="message" rows="4" formControlName="description"
+            class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+            placeholder="Your message..."></textarea>
+    </div>
+    <div class="mb-3">
+        <label for="name" class="form-label block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">
+            price
+        </label>
+        <input type="number" id="name" name="name" formControlName="price"
+            class="shadow-sm  text-wrap  bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5">
+    </div>
+    <div class="mb-3">
+        <label for="name"
+            class="form-label block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">price_type</label>
+        <input type="text" id="name" name="name" formControlName="price_type"
+            class="shadow-sm  text-wrap  bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5">
+    </div>
+    <div class="mb-3">
+        <label for="name"
+            class="form-label block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">location</label>
+        <input type="text" id="name" name="name" formControlName="location"
+            class="shadow-sm  text-wrap  bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5">
+    </div>
+
+    <div class="mb-3">
+        <label for="name"
+            class="form-label block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">propertyType</label>
+
+        <select id="category" formControlName="propertyType"
+            class="shadow-sm  text-wrap  bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5">
+            <option [value]="product.propertyType" defaultSelected>Duplex </option>
+            <option value="Town House">Town House</option>
+            <option value="Stand Alone">Stand Alone</option>
+        </select>
+    </div>
+    <div class="mb-3">
+        <label for="name"
+            class="form-label block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">area</label>
+        <input type="number" id="name" name="name" formControlName="area"
+            class="shadow-sm  bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5">
+    </div>
+    <div class="mb-3">
+        <label for="name"
+            class="form-label block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">phoneNumber</label>
+        <input type="text" id="name" name="name" formControlName="phoneNumber"
+            class="shadow-sm  bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5">
+    </div>
+    <div class="centerButton">
+
+        <button type="submit"
+            class=" bg-orange-500 hover:bg-orange-700 text-white font-bold py-2 px-4 border border-blue-700 rounded-full">Update
+            Product</button>
+    </div>
 </form>
+
+<!-- 
+{
+        "_id": "6608844fc9fba05326cc9582",
+
+        "images": [
+            "http://localhost:3000/images/images_1711834173307.jpg",
+            "http://localhost:3000/images/images_1711834175778.jpg"
+        ],
+        "sellerId": "660883abc9fba05326cc930a",
+        
+        "subCategoryId": "65f2e4472ec9b39f42901278",
+        "contact_type": "both",
+       
+      
+       
+        "amenities": [
+            "balcony",
+            "Built in Kitchen Appliances"
+        ],
+        "bedRooms": "4",
+        "bathRooms": "2",
+        "model": "",
+        "createdAt": "2024-03-30T21:29:51.033Z",
+        "updatedAt": "2024-03-30T21:29:51.033Z",
+        "__v": 0
+    }
+
+
+ -->

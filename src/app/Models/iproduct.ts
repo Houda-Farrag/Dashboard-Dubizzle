@@ -3,7 +3,7 @@ export interface Iproduct {
     name: string
     description: string
     price: string
-    images: [string]
+    images: []
     sellerId: string
     price_type: string
     location: string
@@ -18,4 +18,5 @@ export interface Iproduct {
     model: string
     brand: string
     createdAt: string
+
 }

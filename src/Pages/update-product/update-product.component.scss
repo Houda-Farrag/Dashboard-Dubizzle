@@ -1,0 +1,11 @@
+.centerButton {
+    display: flex;
+    justify-content: center;
+    position: relative;
+    margin-top: 50px;
+}
+
+.centerButton>button {
+    position: absolute;
+    bottom: 5%;
+}

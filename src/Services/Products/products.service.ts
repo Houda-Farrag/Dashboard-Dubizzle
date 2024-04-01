@@ -37,7 +37,7 @@ export class ProductsService {
   }
   getProductWithID(idproduct: string) {
 
-    return this.productsData.find(product => product._id == idproduct)
+    return this.productsData.find((product: Iproduct) => product._id == idproduct)
   }
   updateProduct(id: string, product: Iproduct) {
     return this.httpclient.patch("http://localhost:3000/products/" + id, product)
