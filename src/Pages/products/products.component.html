@@ -21,78 +21,61 @@
 </div>
 }
 @else {
+<div class="relative overflow-x-auto shadow-md sm:rounded-lg">
+    <table class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400 border">
+        <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+            <tr>
+                <th scope="col" class="px-6 py-3">
+                    name
+                </th>
+                <th scope="col" class="px-6 py-3">
+                    date
+                </th>
 
-<div class="">
-
-    <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
-
-        <table class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400 border">
-
-            <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
-
-                <tr>
-                    <th scope="col" class="px-6 py-3">
-                        name
-                    </th>
-                    <th scope="col" class="px-6 py-3">
-                        date
-                    </th>
-
-                    <th scope="col" class="px-6 py-3">
-                        <button>
-                            seller Id
+                <th scope="col" class="px-6 py-3">
+                    <button>
+                        seller Id
+                    </button>
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            @for (product of products; track $index) {
+            <tr class="border">
+                <th scope="row "
+                    class=" min-w-28 max-w-80 px-2  py-2 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                    <p class=" overflow-clip text-wrap cursor-pointer" title={{product.name}}>
+                        <button (click)="onClickGoToDetails(product._id)">
+                            {{product.name}}
                         </button>
-                    </th>
-                </tr>
-
-            </thead>
-
-            <tbody>
-
-                @for (product of products; track $index) {
-                <tr class="border">
-                    <th scope="row "
-                        class=" min-w-28 max-w-80 px-2  py-2 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                        <p class=" overflow-clip text-wrap cursor-pointer" title={{product.name}}>
-                            <button (click)="onClickGoToDetails(product._id)">
-                                {{product.name}}
-                            </button>
-
-                        </p>
-                    </th>
-                    <td class="px-6 py-4">
-                        {{product.createdAt}}
-                    </td>
-                    <td class="px-6 py-4">
-                        {{product.sellerId}}
-                    </td>
-                    <td class="px-6 py-4 grid grid-flow-col gap-1">
-
-                        <button (click)="onClickDeleteProduct(product._id)"
-                            class="middle none center mr-4 rounded-lg bg-red-500 py-3 px-6 font-sans text-xs font-bold uppercase text-white shadow-md shadow-red-500/20 transition-all hover:shadow-lg hover:shadow-red-500/40 focus:opacity-[0.85] focus:shadow-none active:opacity-[0.85] active:shadow-none disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none"
-                            data-ripple-light="true"> delete
-                        </button>
-                        <button (click)="onClickGoToDetails(product._id)"
-                            class="middle none center mr-4 rounded-lg bg-green-500 py-3 px-6 font-sans text-xs font-bold uppercase text-white shadow-md shadow-green-500/20 transition-all hover:shadow-lg hover:shadow-green-500/40 focus:opacity-[0.85] focus:shadow-none active:opacity-[0.85] active:shadow-none disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none"
-                            data-ripple-light="true">
-                            details
-                        </button>
-                        <button (click)="onClickUpdateProduct(product._id)"
-                            class="middle none center rounded-lg bg-orange-500 py-3 px-6 font-sans text-xs font-bold uppercase text-white shadow-md shadow-orange-500/20 transition-all hover:shadow-lg hover:shadow-orange-500/40 focus:opacity-[0.85] focus:shadow-none active:opacity-[0.85] active:shadow-none disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none"
-                            data-ripple-light="true">
-                            update
-                        </button>
-
-                    </td>
-                </tr>
-                }
-
-            </tbody>
-
-        </table>
-
-    </div>
-
+                    </p>
+                </th>
+                <td class="px-6 py-4">
+                    {{product.createdAt}}
+                </td>
+                <td class="px-6 py-4">
+                    {{product.sellerId}}
+                </td>
+                <td class="px-6 py-4 grid grid-flow-col gap-1">
+                    <button (click)="onClickDeleteProduct(product._id)"
+                        class="middle none center mr-4 rounded-lg bg-red-500 py-3 px-6 font-sans text-xs font-bold uppercase text-white shadow-md shadow-red-500/20 transition-all hover:shadow-lg hover:shadow-red-500/40 focus:opacity-[0.85] focus:shadow-none active:opacity-[0.85] active:shadow-none disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none"
+                        data-ripple-light="true"> delete
+                    </button>
+                    <button (click)="onClickGoToDetails(product._id)"
+                        class="middle none center mr-4 rounded-lg bg-green-500 py-3 px-6 font-sans text-xs font-bold uppercase text-white shadow-md shadow-green-500/20 transition-all hover:shadow-lg hover:shadow-green-500/40 focus:opacity-[0.85] focus:shadow-none active:opacity-[0.85] active:shadow-none disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none"
+                        data-ripple-light="true">
+                        details
+                    </button>
+                    <button (click)="onClickUpdateProduct(product._id)"
+                        class="middle none center rounded-lg bg-orange-500 py-3 px-6 font-sans text-xs font-bold uppercase text-white shadow-md shadow-orange-500/20 transition-all hover:shadow-lg hover:shadow-orange-500/40 focus:opacity-[0.85] focus:shadow-none active:opacity-[0.85] active:shadow-none disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none"
+                        data-ripple-light="true">
+                        update
+                    </button>
+                </td>
+            </tr>
+            }
+        </tbody>
+    </table>
 </div>
 
 }

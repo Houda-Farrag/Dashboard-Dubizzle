@@ -3,8 +3,8 @@ export interface Iproduct {
     name: string
     description: string
     price: string
-    images: []
-    sellerId: string
+    images: string[]
+    sellerId: any
     price_type: string
     location: string
     subCategoryId: string

@@ -1,19 +1,16 @@
-import { Component } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { Component, Input, input } from '@angular/core';
 
 @Component({
   selector: 'app-slider',
   standalone: true,
-  imports: [],
+  imports: [CommonModule],
   templateUrl: './slider.component.html',
   styleUrl: './slider.component.scss'
 })
 export class SliderComponent {
-
-
-  images: { src: string, alt: string }[] = [
-    { src: 'https://images.dubizzle.com.eg/thumbnails/83048137-800x600.web', alt: 'Product Image 1' },
-    { src: 'https://images.dubizzle.com.eg/thumbnails/83048137-800x600.web', alt: 'Product Image 2' },
-    { src: 'https://images.dubizzle.com.eg/thumbnails/83048137-800x600.web', alt: 'Product Image 3' },
-  ];
-
+  @Input() images: string[] = [];
+  constructor() {
+    console.log("from slider", this.images)
+  }
 }
