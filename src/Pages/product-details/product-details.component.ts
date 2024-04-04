@@ -4,13 +4,13 @@ import { ProductsService } from '../../Services/Products/products.service';
 import { CommonModule } from '@angular/common';
 import { Isubcategory } from '../../app/Models/isubcategory';
 import { SubCategoriesServiceService } from '../../Services/Sub-Categories/sub-categories-service.service';
-import { SliderComponent } from '../../app/Components/slider/slider.component';
+
 import { Iproduct } from '../../app/Models/iproduct';
 
 @Component({
   selector: 'app-product-details',
   standalone: true,
-  imports: [CommonModule, SliderComponent],
+  imports: [CommonModule,],
   templateUrl: './product-details.component.html',
   styleUrl: './product-details.component.scss'
 })

@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Icategory } from '../../app/Models/icategory';
 import { BehaviorSubject, Observable } from 'rxjs';
+import { environment } from '../../environments/environment.development';
 
 @Injectable({
   providedIn: 'root'
@@ -14,7 +15,7 @@ export class CategoriesServiceService {
   }
 
   getAllCategories(): Observable<[Icategory]> {
-    return this.httpclient.get<[Icategory]>("http://localhost:3000/categories")
+    return this.httpclient.get<[Icategory]>(`${environment.EndPointUrl}categories`)
   }
 
 

@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { SliderComponent } from '../../app/Components/slider/slider.component';
+
 import { NzCarouselModule } from 'ng-zorro-antd/carousel';
 import { Iproduct } from '../../app/Models/iproduct';
 import { ProductsService } from '../../Services/Products/products.service';
@@ -10,7 +10,7 @@ import { Router } from '@angular/router';
 @Component({
   selector: 'app-properties',
   standalone: true,
-  imports: [SliderComponent],
+  imports: [],
   templateUrl: './properties.component.html',
   styleUrl: './properties.component.scss'
 })

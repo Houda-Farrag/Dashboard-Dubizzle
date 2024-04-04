@@ -4,6 +4,7 @@ import { Observable } from 'rxjs';
 import { Iproduct } from '../../app/Models/iproduct';
 import { Isubcategory } from '../../app/Models/isubcategory';
 import { SubCategoriesServiceService } from '../Sub-Categories/sub-categories-service.service';
+import { environment } from '../../environments/environment.development';
 
 @Injectable({
   providedIn: 'root'
@@ -24,11 +25,11 @@ export class ProductsService {
   }
 
   getAllProducts(): Observable<[Iproduct]> {
-    return this.httpclient.get<[Iproduct]>("http://localhost:3000/products/get")
+    return this.httpclient.get<[Iproduct]>(`${environment.EndPointUrl}products/get`)
   }
 
   getProductByID(id: string): Observable<Iproduct> {
-    return this.httpclient.get<Iproduct>("http://localhost:3000/products/get/" + id)
+    return this.httpclient.get<Iproduct>(`${environment.EndPointUrl}products/get/${id}`)
   }
 
   getProductBySubCategory(subCategoryId: string) {
@@ -40,13 +41,13 @@ export class ProductsService {
     return this.productsData.find((product: Iproduct) => product._id == idproduct)
   }
   updateProduct(id: string, product: Iproduct) {
-    return this.httpclient.patch("http://localhost:3000/products/" + id, product)
+    return this.httpclient.patch(`${environment.EndPointUrl}products/${id}`, product)
   }
   deleteProduct(idprod: string) {
-    return this.httpclient.delete("http://localhost:3000/products/" + idprod)
+    return this.httpclient.delete(`${environment.EndPointUrl}products/ ${idprod}`)
   }
   deleteAllProductsWithIdSeller(idseller: string) {
-    return this.httpclient.delete("http://localhost:3000/products/userProducts/" + idseller)
+    return this.httpclient.delete(`${environment.EndPointUrl}products/userProducts/${idseller}`)
   }
 }
 /*

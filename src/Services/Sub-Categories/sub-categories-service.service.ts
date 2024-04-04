@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { Isubcategory } from '../../app/Models/isubcategory';
+import { environment } from '../../environments/environment.development';
 
 @Injectable({
   providedIn: 'root'
@@ -19,7 +20,7 @@ export class SubCategoriesServiceService {
   }
 
   getAllSubCategories(): Observable<[Isubcategory]> {
-    return this.httpclient.get<[Isubcategory]>("http://localhost:3000/sub-category")
+    return this.httpclient.get<[Isubcategory]>(`${environment.EndPointUrl}sub-category`)
   }
 
   getsubCategoryByID(id: string) {
