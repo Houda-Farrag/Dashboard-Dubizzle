@@ -28,7 +28,7 @@ export class UpdateProductComponent implements OnInit {
 
     let data: any = this.productService.getProductWithID(this.productId)
     this.product = data
-
+    console.log(this.product)
   }
 
   ngOnInit(): void {

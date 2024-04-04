@@ -34,5 +34,8 @@ export class UsersService {
   getUserByID(id: string): Observable<User> {
     return this.httpclient.get<User>("http://localhost:3000/users/getUser/" + id)
   }
+  getUserByIDOfline(id: string) {
+    this.usersData.find((user) => { })
+  }
 
 }

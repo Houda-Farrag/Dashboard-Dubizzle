@@ -26,7 +26,6 @@ export class ChartsComponentComponent implements OnInit {
 
     this.subCategoryService.getAllSubCategories().subscribe(allSubCat => {
       const series = allSubCat.map(subcat => {
-
         return {
           name: subcat.name,
           y: this.productServ.getProductBySubCategory(subcat._id)

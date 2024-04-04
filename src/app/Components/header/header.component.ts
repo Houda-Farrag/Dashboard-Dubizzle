@@ -12,9 +12,16 @@ export class HeaderComponent {
 
   items = ["users", "category", "sub-category", "properties", "products"]
 
-  open1: boolean = true
+  openAvatar: boolean
+  openHeader: boolean
   constructor() {
-    this.open1 = true
+    this.openAvatar = true
+    this.openHeader = true
   }
-
+  isopenAvatar() {
+    this.openAvatar = !this.openAvatar
+  }
+  isopenHeader() {
+    this.openHeader = !this.openHeader
+  }
 }

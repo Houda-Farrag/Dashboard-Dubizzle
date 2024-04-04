@@ -13,6 +13,7 @@ import { ProductDetailsComponent } from '../Pages/product-details/product-detail
 import { UserDetailsComponent } from '../Pages/user-details/user-details.component';
 import { UpdateUserComponent } from '../Pages/update-user/update-user.component';
 import { UpdateProductComponent } from '../Pages/update-product/update-product.component';
+import { TeamComponent } from '../Pages/team/team.component';
 
 export const routes: Routes = [
     { path: '', redirectTo: 'home', pathMatch: 'full' },
@@ -29,6 +30,8 @@ export const routes: Routes = [
     { path: 'user-details/:iduser', component: UserDetailsComponent },
     { path: 'user-update/:iduser', component: UpdateUserComponent },
     { path: 'product-update/:idprod', component: UpdateProductComponent },
+    { path: 'team', component: TeamComponent },
+
 
     { path: '**', component: NotFoundComponent },
 ];

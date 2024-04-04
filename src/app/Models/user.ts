@@ -7,8 +7,8 @@ export interface User {
         name: String
         avatar: String
         bio: String
-        phoneNumber: String
     }
+    phoneNumber: String
     roles: Object
     likedProducts: []
 }
