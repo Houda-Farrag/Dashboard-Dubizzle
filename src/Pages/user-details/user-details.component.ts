@@ -35,6 +35,7 @@ export class UserDetailsComponent {
     })
   }
   productDetials(idProd: string) {
+    console.log(idProd)
     this.router.navigate(["product-details", idProd])
   }
 }

@@ -49,21 +49,27 @@ export class UpdateProductComponent implements OnInit {
     });
 
   }
-  updateProduct(): void {
-    if (this.productForm.valid) {
-      const updatedProduct: Iproduct = { ...this.product, ...this.productForm.value };
-      this.productService.updateProduct(this.productId, updatedProduct).subscribe(() => {
-        console.log('Product updated successfully');
-        this.router.navigate(['/products']); // Redirect to the product list page
+  updateProduct() {
+    if (this.productForm.dirty) {
+      const updatedProduct: Iproduct = { ...this.productForm.value };
+
+      this.productService.updateProduct(this.productId, updatedProduct).subscribe((res) => {
+
+        if (res) {
+          setTimeout(() => {
+            alert("updated product")
+          }, 1000);
+          this.router.navigate(['/products']); // Redirect to the product list page
+        }
+        else {
+          console.log("not updated")
+        }
       });
+
+    }
+    else {
+      console.log("updated failed !!!!")
     }
   }
-
-
-  onSubmit() {
-    console.log(this.product)
-  }
-
-
 
 }

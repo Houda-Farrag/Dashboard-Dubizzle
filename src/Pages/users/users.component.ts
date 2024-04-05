@@ -41,6 +41,7 @@ export class UsersComponent implements OnInit {
   }
 
   onClickUpdate(id: string) {
+    console.log(id)
     this.router.navigate(["user-update", id])
   }
 

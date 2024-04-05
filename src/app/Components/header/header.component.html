@@ -37,9 +37,9 @@
                                 aria-expanded="false" aria-haspopup="true">
                                 <span class="absolute -inset-1.5"></span>
                                 <span class="sr-only">Open user menu</span>
-                                <!-- <img class="h-8 w-8 rounded-full"
-                                    src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
-                                    alt=""> -->
+                                @if (isUser && admin) {
+                                <img class="h-10 w-10 object-fill rounded-full" [src]="admin.avatar" alt="">
+                                }@else {
                                 <div
                                     class="relative w-10 h-10 overflow-hidden bg-gray-100 rounded-full dark:bg-gray-600">
                                     <svg class="absolute w-12 h-12 text-gray-400 -left-1" fill="currentColor"
@@ -49,6 +49,8 @@
                                         </path>
                                     </svg>
                                 </div>
+                                }
+
                             </button>
                         </div>
 
@@ -60,8 +62,10 @@
                                 id="user-menu-item-0">Your Profile</a>
                             <a href="#" class="block px-4 py-2 text-sm text-gray-700" role="menuitem" tabindex="-1"
                                 id="user-menu-item-1">Settings</a>
-                            <a href="#" class="block px-4 py-2 text-sm text-gray-700" role="menuitem" tabindex="-1"
-                                id="user-menu-item-2">Sign out</a>
+                            <a (click)="logout()" [hidden]="!isUser" class="block px-4 py-2 text-sm text-gray-700"
+                                role="menuitem" tabindex="-1" id="user-menu-item-2">Sign out</a>
+                            <a href="signin" [hidden]="isUser" class="block px-4 py-2 text-sm text-gray-700"
+                                role="menuitem" tabindex="-1" id="user-menu-item-2">Sign In</a>
                         </div>
                     </div>
                 </div>

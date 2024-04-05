@@ -18,7 +18,7 @@ export class ProductsComponent {
     this.productService.getAllProducts().subscribe((data) => {
 
       this.products = data
-      console.log(this.products)
+
 
     })
   }

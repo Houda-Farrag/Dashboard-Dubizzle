@@ -17,16 +17,19 @@
             <h1 class="font-serif font-bold text-2xl">{{userDetails.profile.name}}</h1>
             <h1 class="text-xl">{{userDetails.email}}</h1>
             <h2 class="text-xl text-blue-700">{{userDetails.phoneNumber}}</h2>
-
+            <div class="my-3">
+                <p class="font-bold text-xl">product number <span
+                        class="text-2xl text-green-500 ">{{(produtUser.length>0)?produtUser.length:'0'}}</span></p>
+            </div>
         </div>
     </div>
     <div class="my-4 grid grid-flow-row">
         <div class="max-w-full overflow-auto">
             <h1 class="font-serif font-bold text-3xl">Products</h1>
             <div class="flex flex-row flex-nowrap  max-w-full">
+                @if (produtUser.length > 0) {
 
                 @for (product of produtUser; track $index) {
-
                 <div class="grid grid-flow-row mx-4 p-3 border rounded-xl min-w-48 cursor-pointer"
                     (click)="productDetials(product._id)">
                     <div class="min-h-52 w-full">
@@ -37,7 +40,9 @@
                     </div>
                 </div>
                 }
-
+                }@else {
+                <div>No product for this user</div>
+                }
             </div>
         </div>
 

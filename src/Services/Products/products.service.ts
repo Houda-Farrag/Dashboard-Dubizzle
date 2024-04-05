@@ -41,7 +41,9 @@ export class ProductsService {
     return this.productsData.find((product: Iproduct) => product._id == idproduct)
   }
   updateProduct(id: string, product: Iproduct) {
+
     return this.httpclient.patch(`${environment.EndPointUrl}products/${id}`, product)
+
   }
   deleteProduct(idprod: string) {
     return this.httpclient.delete(`${environment.EndPointUrl}products/ ${idprod}`)
