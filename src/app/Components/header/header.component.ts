@@ -1,14 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, RouterModule, RouterOutlet } from '@angular/router';
 import { AdminService } from '../../../Services/Admin/admin.service';
+import { Admin } from '../../Models/admin';
 
-
-interface tokenDecode {
-  username: string
-  avatar: string
-  userType: string
-  roles: []
-}
 
 @Component({
   selector: 'header',
@@ -21,7 +15,7 @@ interface tokenDecode {
 export class HeaderComponent implements OnInit {
 
   items = ["users", "category", "sub-category", "properties", "products"]
-  admin!: tokenDecode
+  admin!: Admin
   openAvatar: boolean
   openHeader: boolean
   isUser: boolean
@@ -31,6 +25,16 @@ export class HeaderComponent implements OnInit {
     this.isUser = this.adminServ.isLoged
     this.adminServ.adminloged().subscribe((admin) => {
       this.admin = admin.UserInfo
+      if (admin) {
+        let { UserInfo } = admin
+        if (UserInfo) {
+          this.admin = UserInfo
+        } else {
+          this.admin = { username: "", avatar: "", roles: [], userType: "", description: "", email: "" }
+        }
+      } else {
+        this.admin = { username: "", avatar: "", roles: [], userType: "", description: "", email: "" }
+      }
       console.log(this.admin)
     })
     //  this.adminServ.decodeToken(localStorage.getItem("token") || '').UserInfo
@@ -54,6 +58,7 @@ export class HeaderComponent implements OnInit {
       if (response) {
         localStorage.removeItem("token")
         this.adminServ.ckeckSubject.next(this.adminServ.isLoged)
+        this.router.navigate(["signin"])
       }
     })
 

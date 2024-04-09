@@ -15,6 +15,8 @@ import { UpdateUserComponent } from '../Pages/update-user/update-user.component'
 import { UpdateProductComponent } from '../Pages/update-product/update-product.component';
 import { TeamComponent } from '../Pages/team/team.component';
 import { authGuard } from './Guards/auth.guard';
+import { ProfileComponent } from '../Pages/profile/profile.component';
+import { SettingComponent } from '../Pages/setting/setting.component';
 
 export const routes: Routes = [
     { path: '', redirectTo: 'home', pathMatch: 'full', },
@@ -29,9 +31,11 @@ export const routes: Routes = [
     { path: 'user-details/:iduser', component: UserDetailsComponent, canActivate: [authGuard] },
     { path: 'product-details/:idprod', component: ProductDetailsComponent, canActivate: [authGuard] },
     { path: 'user-details/:iduser', component: UserDetailsComponent, canActivate: [authGuard] },
-    // { path: 'user-update/:iduser', component: UpdateUserComponent, canActivate: [authGuard] },
     { path: 'product-update/:idprod', component: UpdateProductComponent, canActivate: [authGuard] },
     { path: 'team', component: TeamComponent },
+    { path: 'profile', component: ProfileComponent, canActivate: [authGuard] },
+    { path: 'setting', component: SettingComponent, canActivate: [authGuard] },
 
     { path: '**', component: NotFoundComponent },
+    // { path: 'user-update/:iduser', component: UpdateUserComponent, canActivate: [authGuard] },
 ];

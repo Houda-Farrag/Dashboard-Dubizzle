@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 import { environment } from '../../environments/environment.development';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { Router } from '@angular/router';
-import { Admin } from '../../app/Models/admin';
+
 import { jwtDecode } from "jwt-decode";
 @Injectable({
   providedIn: 'root'
@@ -15,11 +15,9 @@ export class AdminService {
   constructor(private httpClient: HttpClient, private router: Router) {
     this.ckeckSubject = new BehaviorSubject<boolean>(this.isLoged);
     this.admin = new BehaviorSubject<any>(this.decodeToken(localStorage.getItem('token') || ""))
-
   }
 
   logIn(username: string, password: string) {
-
     return this.httpClient.post(`${environment.EndPointUrl}loginAdmin`, { username: username.trim(), password: password })
   }
 
@@ -32,7 +30,6 @@ export class AdminService {
 
     return this.httpClient.get(`${environment.EndPointUrl}logoutAdmin`, { headers: headers })
   }
-
 
   loginTest() {
     localStorage.setItem("token", "token added")
@@ -63,6 +60,7 @@ export class AdminService {
     }
     else { return null }
   }
+
   adminloged() {
     return this.admin.asObservable();
   }

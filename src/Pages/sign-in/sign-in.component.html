@@ -17,18 +17,21 @@
                 <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for='Password'>User
                     Name
                 </label>
-                <input
-                    class="appearance-none block w-full bg-white text-gray-900 font-medium border border-gray-400 rounded-lg py-3 px-3 leading-tight focus:outline-none"
-                    type='email' required minlength="8" maxlength="15" #username
-                    [ngClass]="{'border-green-600':username.validity?true:false}">
+                <input name="username"
+                    class="focus:border-white appearance-none block w-full bg-white text-gray-900 font-medium border border-gray-400 rounded-lg py-3 px-3 leading-tight focus:outline-none"
+                    [ngClass]="{'border-2 border-green-500 shadow-green-500 shadow-md':username.valid?true:false}"
+                    type='text' required minlength="8" maxlength="15" [(ngModel)]="userName" #username="ngModel">
+                <p [hidden]="!username.valid && !username.touched">valid username</p>
+                <p [hidden]="username.valid&&username.touched">un valid username</p>
+
             </div>
 
             <div class="w-full md:w-full px-3 mb-6">
                 <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
                     for='Password'>Password</label>
-                <input
+                <input name="password"
                     class="appearance-none block w-full bg-white text-gray-900 font-medium border border-gray-400 rounded-lg py-3 px-3 leading-tight focus:outline-none"
-                    type='password' required #userpassword [ngClass]="">
+                    type='password' required #userpassword="ngModel" [(ngModel)]="password">
             </div>
 
             <div class="w-full md:w-full px-3 mb-6">
@@ -41,4 +44,16 @@
 
     </form>
 
+</div>
+<div class="flex justify-end gap-4">
+    <p>
+        {{username.valid |json}}
+    </p>
+    <p>
+        {{username.dirty |json}}
+    </p>
+    <p>
+        {{username.value |json}}
+
+    </p>
 </div>

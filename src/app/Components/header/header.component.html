@@ -11,8 +11,12 @@
                     </svg>
                 </button>
                 <div class="flex flex-1 items-center justify-center sm:items-stretch sm:justify-start">
+
                     <div class="flex flex-shrink-0 items-center">
                         <a href="#" class="text-xl font-bold flex items-center lg:ml-2.5">
+                            <img class="bg-red-500 outline-red-600 outline-1 h-10 w-10 me-2 rounded-full"
+                                src="https://yt3.ggpht.com/kRzMTk-WAGsUE_torvy8GrjKlZP9MDW1hB-Rwy1whgJzoE1jwKKClZlwFyjgAyMjKKW3Y1Blfxs=s88-c-k-c0x00ffffff-no-rj"
+                                alt="">
                             <span class="self-center whitespace-nowrap ">Dashboard</span>
                         </a>
                     </div>
@@ -58,14 +62,18 @@
                             class="absolute right-0 transform-gpu z-10 mt-2 w-48 origin-top-right rounded-md bg-white py-1 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none"
                             role="menu" aria-orientation="vertical" aria-labelledby="user-menu-button" tabindex="-1">
                             <!-- Active: "bg-gray-100", Not Active: "" -->
-                            <a href="#" class="block px-4 py-2 text-sm text-gray-700" role="menuitem" tabindex="-1"
+                            <a routerLink="profile" (click)="openAvatar=!openAvatar"
+                                class="block px-4 py-2 text-sm text-gray-700" role="menuitem" tabindex="-1"
                                 id="user-menu-item-0">Your Profile</a>
-                            <a href="#" class="block px-4 py-2 text-sm text-gray-700" role="menuitem" tabindex="-1"
+                            <a routerLink="setting" (click)="openAvatar=!openAvatar"
+                                class="block px-4 py-2 text-sm text-gray-700" role="menuitem" tabindex="-1"
                                 id="user-menu-item-1">Settings</a>
-                            <a (click)="logout()" [hidden]="!isUser" class="block px-4 py-2 text-sm text-gray-700"
-                                role="menuitem" tabindex="-1" id="user-menu-item-2">Sign out</a>
-                            <a href="signin" [hidden]="isUser" class="block px-4 py-2 text-sm text-gray-700"
-                                role="menuitem" tabindex="-1" id="user-menu-item-2">Sign In</a>
+                            <a (click)="logout()" [hidden]="!isUser" (click)="openAvatar=!openAvatar"
+                                class="block px-4 py-2 text-sm text-gray-700" role="menuitem" tabindex="-1"
+                                id="user-menu-item-2">Sign out</a>
+                            <a href="signin" [hidden]="isUser" (click)="openAvatar=!openAvatar"
+                                class="block px-4 py-2 text-sm text-gray-700" role="menuitem" tabindex="-1"
+                                id="user-menu-item-2">Sign In</a>
                         </div>
                     </div>
                 </div>

@@ -26,6 +26,7 @@ export class AppComponent implements OnInit {
   }
   logout() {
     // this.adminServ.logOuttest()
+
     this.adminServ.logOut().subscribe((reselt) => {
       console.log(reselt)
       if (reselt) {
@@ -35,4 +36,7 @@ export class AppComponent implements OnInit {
       }
     })
   }
+
+
+
 }
