@@ -24,26 +24,21 @@
 
 <div class="">
 
-    <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
-
-        <table class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400 border">
-
-            <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
-
-                <tr>
-                    <th scope="col" class="px-6 py-3">
-                        name
-                    </th>
-                    <th scope="col" class="px-6 py-3">
-                        email
-                    </th>
-                </tr>
-
-            </thead>
-
-            <tbody>
-
-                @for (user of users; track $index) {
+    <!-- <div class="relative overflow-x-auto shadow-md fs-4  sm:rounded-lg"> -->
+    <!-- <table class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400 border"> -->
+    <table class="w-full fs-5 border-separate table-auto">
+        <thead class="bg-gray-100 rounded-sm">
+            <tr class="">
+                <th class="text-left">Avatar</th>
+                <th class="text-left">User Name</th>
+                <th class="text-left">Email</th>
+                <th class="text-left">Phone</th>
+                <th class="text-left">Status</th>
+                <th class="text-center">Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            <!-- @for (user of users; track $index) {
                 <tr class="border">
                     <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
                         {{user.profile.name}}
@@ -52,7 +47,6 @@
                         {{user.email}}
                     </td>
                     <td class="px-6 py-4 grid grid-flow-col gap-1">
-
                         <button (click)="onClickDelete(user._id)"
                             class="middle none center mr-4 rounded-lg bg-red-500 py-3 px-6 font-sans text-xs font-bold uppercase text-white shadow-md shadow-red-500/20 transition-all hover:shadow-lg hover:shadow-red-500/40 focus:opacity-[0.85] focus:shadow-none active:opacity-[0.85] active:shadow-none disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none"
                             data-ripple-light="true"> delete
@@ -67,17 +61,87 @@
                             data-ripple-light="true">
                             update
                         </button>
-
                     </td>
-
                 </tr>
-                }
+                } -->
+            @for (user of users; track $index) {
+            <tr>
+                <td class="">
+                    @if (user.profile.avatar) {
+                    <img class="inline-block h-8 w-8 rounded-full ring-2 ring-white" [src]="user.profile.avatar"
+                        alt="avatar image">
+                    }@else {
 
-            </tbody>
+                    <div class="relative w-10 h-10 overflow-hidden bg-gray-100 rounded-full dark:bg-gray-600">
+                        <svg class="absolute w-12 h-12 text-gray-400 -left-1" fill="currentColor" viewBox="0 0 20 20"
+                            xmlns="http://www.w3.org/2000/svg">
+                            <path fill-rule="evenodd" d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z"
+                                clip-rule="evenodd">
+                            </path>
+                        </svg>
+                    </div>
+                    }
+                </td>
+                <td> {{user.profile.name}}</td>
+                <td class="text-wrap"> {{user.email}}</td>
+                <td>
+                    @if (user.phoneNumber) {
+                    {{user.phoneNumber}}
+                    }
+                    @else {
+                    <p class="text-red-400">No Phone Number</p>
+                    }
+                </td>
+                <td>
+                    @if (user.refreshToken =='logged out') {
+                    <p class="bg-red-50 text-red-700 px-3 py-1 ring-1 ring-red-200 text-xs rounded-md">log out</p>
+                    }
+                    @else {
+                    <p class="bg-green-50 text-green-700 px-3 py-1 ring-1 ring-green-200 text-xs rounded-md">active
+                    </p>
+                    }
+                </td>
 
-        </table>
+                <td>
+                    <div class="flex justify-evenly gap-1">
+                        <i (click)="onClickDetails(user._id)" title="View"
+                            class="fa-solid fa-eye p-1 text-violet-500 rounded-full cursor-pointer"></i>
+                        <i (click)="onClickDelete(user._id)" title="Delete"
+                            class="fa-solid fa-trash p-1 text-red-500 rounded-full cursor-pointer"></i>
+                    </div>
+                </td>
+            </tr>
+            <!-- <tr class="border">
+                    <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                        {{user.profile.name}}
+                    </th>
+                    <td class="px-6 py-4">
+                        {{user.email}}
+                    </td>
+                    <td class="px-6 py-4 grid grid-flow-col gap-1">
+                        <button (click)="onClickDelete(user._id)"
+                            class="middle none center mr-4 rounded-lg bg-red-500 py-3 px-6 font-sans text-xs font-bold uppercase text-white shadow-md shadow-red-500/20 transition-all hover:shadow-lg hover:shadow-red-500/40 focus:opacity-[0.85] focus:shadow-none active:opacity-[0.85] active:shadow-none disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none"
+                            data-ripple-light="true"> delete
+                        </button>
+                        <button
+                            class="middle none center mr-4 rounded-lg bg-green-500 py-3 px-6 font-sans text-xs font-bold uppercase text-white shadow-md shadow-green-500/20 transition-all hover:shadow-lg hover:shadow-green-500/40 focus:opacity-[0.85] focus:shadow-none active:opacity-[0.85] active:shadow-none disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none"
+                            data-ripple-light="true" (click)="onClickDetails(user._id)">
+                            details
+                        </button>
+                        <button (click)="onClickUpdate(user._id)"
+                            class="middle none center rounded-lg hidden bg-orange-500 py-3 px-6 font-sans text-xs font-bold uppercase text-white shadow-md shadow-orange-500/20 transition-all hover:shadow-lg hover:shadow-orange-500/40 focus:opacity-[0.85] focus:shadow-none active:opacity-[0.85] active:shadow-none disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none"
+                            data-ripple-light="true">
+                            update
+                        </button>
+                    </td>
+                </tr> -->
+            }
+        </tbody>
 
-    </div>
+    </table>
+
+    <!-- </div> -->
 
 </div>
+
 }

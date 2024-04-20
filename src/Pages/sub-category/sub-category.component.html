@@ -49,11 +49,12 @@
             <tbody>
 
                 @for (subcategory of subCategoryData; track $index) {
-                <tr class="border">
+                <tr class="border hover:bg-sky-500">
                     <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
                         {{subcategory.name}}
                     </th>
-                    <td class="px-6 py-4">
+                    <td class="px-6 py-4 text-green-400  hover:text-black cursor-pointer"
+                        (click)="navigateProdSubCat('sub-category-detials',subcategory._id)">
                         {{subcategory._id}}
                     </td>
 

@@ -16,7 +16,7 @@ import { UpdateProductComponent } from '../Pages/update-product/update-product.c
 import { TeamComponent } from '../Pages/team/team.component';
 import { authGuard } from './Guards/auth.guard';
 import { ProfileComponent } from '../Pages/profile/profile.component';
-import { SettingComponent } from '../Pages/setting/setting.component';
+import { SubCategoryDetailsComponent } from '../Pages/sub-category-details/sub-category-details.component';
 
 export const routes: Routes = [
     { path: '', redirectTo: 'home', pathMatch: 'full', },
@@ -34,7 +34,9 @@ export const routes: Routes = [
     { path: 'product-update/:idprod', component: UpdateProductComponent, canActivate: [authGuard] },
     { path: 'team', component: TeamComponent },
     { path: 'profile', component: ProfileComponent, canActivate: [authGuard] },
-    { path: 'setting', component: SettingComponent, canActivate: [authGuard] },
+
+    { path: 'sub-category-detials/:idsub', component: SubCategoryDetailsComponent, canActivate: [authGuard] },
+
 
     { path: '**', component: NotFoundComponent },
     // { path: 'user-update/:iduser', component: UpdateUserComponent, canActivate: [authGuard] },

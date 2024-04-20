@@ -15,16 +15,15 @@ export class SignInComponent {
 
   userName = ''
   password = ''
+  tost: Boolean = true
   constructor(private adminServ: AdminService, private router: Router) {
   }
 
   login(name: string, password: string) {
-
-    // mahmoudfaraag => user name
-    // pass => 1234567mahm
-    // email => mahmiti2022@gmail.com
+    let response1
     try {
       this.adminServ.logIn(name.trim(), password.trim()).subscribe((res) => {
+        response1 = res
         let response: any = res
         let { accessToken, message } = response
         if (res && accessToken) {
@@ -40,18 +39,27 @@ export class SignInComponent {
           }
         } else {
           console.log('failed log in')
+          this.tost = false
         }
 
       })
     } catch (error) {
-      console.log(error)
+
+      console.log(error, "error")
     }
 
+    if (response1 == undefined) {
+      this.tost = false
+      setTimeout(() => {
+        this.tost = true
+      }, 2000)
+    }
 
   }
 
-  logintest() {
-    this.adminServ.loginTest()
-  }
 
 }
+
+// logintest() {
+//   this.adminServ.loginTest()
+// }

@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { SettingComponent } from './setting.component';
+import { SubCateCardComponent } from './sub-cate-card.component';
 
-describe('SettingComponent', () => {
-  let component: SettingComponent;
-  let fixture: ComponentFixture<SettingComponent>;
+describe('SubCateCardComponent', () => {
+  let component: SubCateCardComponent;
+  let fixture: ComponentFixture<SubCateCardComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [SettingComponent]
+      imports: [SubCateCardComponent]
     })
     .compileComponents();
     
-    fixture = TestBed.createComponent(SettingComponent);
+    fixture = TestBed.createComponent(SubCateCardComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

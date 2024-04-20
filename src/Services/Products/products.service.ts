@@ -5,6 +5,14 @@ import { Iproduct } from '../../app/Models/iproduct';
 import { Isubcategory } from '../../app/Models/isubcategory';
 import { SubCategoriesServiceService } from '../Sub-Categories/sub-categories-service.service';
 import { environment } from '../../environments/environment.development';
+import { UsersService } from '../UserService/users.service';
+import { User } from '../../app/Models/user';
+
+interface test {
+  iduser: string
+  name: String
+  productNumber: number
+}
 
 @Injectable({
   providedIn: 'root'
@@ -13,7 +21,7 @@ export class ProductsService {
 
   productsData !: Iproduct[]
   subcategory!: Isubcategory[]
-  constructor(private httpclient: HttpClient, private subCategoryService: SubCategoriesServiceService) {
+  constructor(private httpclient: HttpClient, private subCategoryService: SubCategoriesServiceService, private userService: UsersService) {
     this.getAllProducts().subscribe((Products) => {
       this.productsData = Products
     })
@@ -34,10 +42,11 @@ export class ProductsService {
 
   getProductBySubCategory(subCategoryId: string) {
     return this.productsData.filter(product => product.subCategoryId == subCategoryId).length
-
+  }
+  getallProductBySubCategory(subCategoryId: string) {
+    return this.productsData.filter(product => product.subCategoryId == subCategoryId)
   }
   getProductWithID(idproduct: string) {
-
     return this.productsData.find((product: Iproduct) => product._id == idproduct)
   }
   updateProduct(id: string, product: Iproduct) {
@@ -51,6 +60,7 @@ export class ProductsService {
   deleteAllProductsWithIdSeller(idseller: string) {
     return this.httpclient.delete(`${environment.EndPointUrl}products/userProducts/${idseller}`)
   }
+
 }
 /*
  

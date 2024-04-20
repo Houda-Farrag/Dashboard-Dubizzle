@@ -24,7 +24,7 @@ export class HeaderComponent implements OnInit {
     this.openHeader = true
     this.isUser = this.adminServ.isLoged
     this.adminServ.adminloged().subscribe((admin) => {
-      this.admin = admin.UserInfo
+      this.admin = admin.UserInfo || ""
       if (admin) {
         let { UserInfo } = admin
         if (UserInfo) {

@@ -1,4 +1,4 @@
 export const environment = {
     production: true,
-    EndPointUrl: ""
+    EndPointUrl: "https://dubizzle-backend.onrender.com/"
 };

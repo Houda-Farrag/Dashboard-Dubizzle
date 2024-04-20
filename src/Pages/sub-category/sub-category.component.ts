@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { SubCategoriesServiceService } from '../../Services/Sub-Categories/sub-categories-service.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-sub-category',
@@ -10,12 +11,14 @@ import { SubCategoriesServiceService } from '../../Services/Sub-Categories/sub-c
 })
 export class SubCategoryComponent {
   subCategoryData: any
-  constructor(private subCategoryService: SubCategoriesServiceService) {
+  constructor(private subCategoryService: SubCategoriesServiceService, private router: Router) {
     this.subCategoryService.getAllSubCategories().subscribe((data) => {
       console.log(data)
       this.subCategoryData = data
     })
   }
-
+  navigateProdSubCat(page: string, idsub: string) {
+    this.router.navigate([page, idsub])
+  }
 
 }

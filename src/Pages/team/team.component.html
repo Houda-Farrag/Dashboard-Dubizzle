@@ -10,65 +10,70 @@
                         <span class="text-[1.15rem] font-medium text-muted"> Meet our talented team, a dynamic group of
                             experts driven by passion and innovation. </span>
                     </div>
+                    @for (admin of admins; track $index) {
+                    @if (admin.username=='ahmed elsayeh') {
+
                     <div class="flex justify-start">
                         <div class="flex flex-col mr-5 text-center  mb-11 lg:mr-16">
                             <div class="inline-block mb-4 relative shrink-0 rounded-[.95rem]">
                                 <img class="inline-block shrink-0 rounded-[.95rem] w-[150px] h-[150px]"
-                                    src="https://media.licdn.com/dms/image/C4E03AQHhooPqYO3pzQ/profile-displayphoto-shrink_200_200/0/1634177167985?e=1717632000&v=beta&t=074nQbT4NZer22t06zWZSn0HUxixqnxMNTbNpipj2xE"
-                                    alt="avarat image">
+                                    [src]="admin.avatar" alt="avarat image">
+                                <!-- src="https://media.licdn.com/dms/image/C4E03AQHhooPqYO3pzQ/profile-displayphoto-shrink_200_200/0/1634177167985?e=1717632000&v=beta&t=074nQbT4NZer22t06zWZSn0HUxixqnxMNTbNpipj2xE" -->
                             </div>
                             <div class="text-center">
                                 <a href="https://www.linkedin.com/in/sayehxp/"
-                                    class="text-dark font-semibold hover:text-primary text-[1.25rem] transition-colors duration-200 ease-in-out">Ahmad
-                                    Elsayeh</a>
+                                    class="text-dark font-semibold hover:text-primary text-[1.25rem] transition-colors duration-200 ease-in-out">{{admin.username}}</a>
                                 <span class="block font-medium text-muted">Supervisor</span>
                             </div>
                         </div>
                     </div>
+                    }
+                    }
                     <div class="flex flex-wrap w-full">
+                        @for (admin of admins; track $index) {
+                        @if (admin.username!='ahmed elsayeh') {
 
                         <div class="flex flex-col mr-5 text-center mb-11 lg:mr-16">
                             <div class="inline-block mb-4 relative shrink-0 rounded-[.95rem]">
                                 <img class="inline-block shrink-0 rounded-[.95rem] w-[150px] h-[150px]"
-                                    src="https://media.licdn.com/dms/image/D4D35AQFViUxiku5M6A/profile-framedphoto-shrink_200_200/0/1702200968921?e=1712851200&v=beta&t=fCLr6cnxK61e0eidomR-n6SIoRd7A5sHavq3KgcQilY"
-                                    alt="avarat image">
+                                    [src]="admin.avatar" alt="avarat image">
                             </div>
                             <div class="text-center">
                                 <a href="https://www.linkedin.com/in/mina-seiffen/"
-                                    class="text-dark font-semibold hover:text-primary text-[1.25rem] transition-colors duration-200 ease-in-out">Mina
-                                    Emad</a>
-                                <span class="block font-medium text-muted">Team Leader & <br> FullStack Dev </span>
+                                    class="text-dark font-semibold hover:text-primary text-[1.25rem] transition-colors duration-200 ease-in-out">{{admin.username}}</a>
+                                <span class="block font-medium text-muted">@if (admin.username == 'mina emad') {
+                                    Team Leader & <br> FullStack Dev }@else {FullStack Dev & <br> specialist
+                                    FrontEnd}</span>
                             </div>
                         </div>
-                        <div class="flex flex-col mr-5 text-center mb-11 lg:mr-16">
-                            <div class="inline-block mb-4 relative shrink-0 rounded-[.95rem]">
-                                <img class="inline-block shrink-0 rounded-[.95rem] w-[150px] h-[150px]"
-                                    src="https://media.licdn.com/dms/image/D4D35AQGbPof3GseccA/profile-framedphoto-shrink_200_200/0/1709533489316?e=1712851200&v=beta&t=6Vhq6TcDOr2otrzTdEkgumGWHtLDwsrNm4L7qrQ4YpE"
-                                    alt="avarat image">
+                        }
+                        <!-- <div class="flex flex-col mr-5 text-center mb-11 lg:mr-16">
+                                <div class="inline-block mb-4 relative shrink-0 rounded-[.95rem]">
+                                    <img class="inline-block shrink-0 rounded-[.95rem] w-[150px] h-[150px]"
+                                        src="../../assets/teamImages/kalifaProfile.jpg" alt="avarat image">
+                                </div>
+                                <div class="text-center">
+                                    <a href="https://www.linkedin.com/in/ahmedkhalifa2/"
+                                        class="text-dark font-semibold hover:text-primary text-[1.25rem] transition-colors duration-200 ease-in-out">Ahmad
+                                        Kalifa</a>
+                                    <span class="block font-medium text-muted">FullStack Dev & <br> specialist FrontEnd
+                                    </span>
+                                </div>
                             </div>
-                            <div class="text-center">
-                                <a href="https://www.linkedin.com/in/ahmedkhalifa2/"
-                                    class="text-dark font-semibold hover:text-primary text-[1.25rem] transition-colors duration-200 ease-in-out">Ahmad
-                                    Kalifa</a>
-                                <span class="block font-medium text-muted">FullStack Dev & <br> specialist FrontEnd
-                                </span>
-                            </div>
-                        </div>
-                        <div class="flex flex-col mr-5 text-center mb-11 lg:mr-16">
-                            <div class="inline-block mb-4 relative shrink-0 rounded-[.95rem]">
-                                <img class="inline-block shrink-0 rounded-[.95rem] w-[150px] h-[150px]"
-                                    src="https://media.licdn.com/dms/image/D4D35AQHKwXbNrg2a8A/profile-framedphoto-shrink_200_200/0/1708676839098?e=1712851200&v=beta&t=ApswdDtGzF9_2_FeEwogzDp0Cnqw0B03M45qLZKt4rQ"
-                                    alt="avarat image">
-                            </div>
-                            <div class="text-center">
-                                <a href="www.linkedin.com/in/mahmoud-farraj"
-                                    class="text-dark font-semibold hover:text-primary text-[1.25rem] transition-colors duration-200 ease-in-out">Mahmoud
-                                    Faraag</a>
-                                <span class="block font-medium text-muted">FullStack Dev & <br> specialist
-                                    FrontEnd</span>
-                            </div>
-                        </div>
-
+                            <div class="flex flex-col mr-5 text-center mb-11 lg:mr-16">
+                                <div class="inline-block mb-4 relative shrink-0 rounded-[.95rem]">
+                                    <img class="inline-block shrink-0 rounded-[.95rem] w-[150px] h-[150px]"
+                                        src="../../assets/teamImages/faraagProfile.jpg" alt="avarat image">
+                                </div>
+                                <div class="text-center">
+                                    <a href="www.linkedin.com/in/mahmoud-farraj"
+                                        class="text-dark font-semibold hover:text-primary text-[1.25rem] transition-colors duration-200 ease-in-out">Mahmoud
+                                        Faraag</a>
+                                    <span class="block font-medium text-muted">FullStack Dev & <br> specialist
+                                        FrontEnd</span>
+                                </div>
+                            </div> -->
+                        }
                     </div>
                 </div>
             </div>
@@ -76,3 +81,10 @@
     </div>
 </div>
 >
+<!-- 
+    <img src="square-small.jpg"
+     srcset="square-large.jpg 2x, square-small.jpg 1x"
+     sizes="(max-width: 600px) 100vw, 50vw"
+     alt="Responsive Image">
+
+ -->

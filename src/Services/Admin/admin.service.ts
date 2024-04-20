@@ -5,6 +5,7 @@ import { BehaviorSubject, Observable } from 'rxjs';
 import { Router } from '@angular/router';
 
 import { jwtDecode } from "jwt-decode";
+import { Admin } from '../../app/Models/admin';
 @Injectable({
   providedIn: 'root'
 })
@@ -63,5 +64,9 @@ export class AdminService {
 
   adminloged() {
     return this.admin.asObservable();
+  }
+
+  getAllAdmin(): Observable<[Admin]> {
+    return this.httpClient.get<[Admin]>(environment.EndPointUrl + "admins/alldata")
   }
 }

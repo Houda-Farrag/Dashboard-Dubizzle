@@ -26,13 +26,13 @@
     <div class="my-4 grid grid-flow-row">
         <div class="max-w-full overflow-auto">
             <h1 class="font-serif font-bold text-3xl">Products</h1>
-            <div class="flex flex-row flex-nowrap  max-w-full">
+            <div class="flex flex-row flex-wrap  max-w-full">
                 @if (produtUser.length > 0) {
 
                 @for (product of produtUser; track $index) {
-                <div class="grid grid-flow-row mx-4 p-3 border rounded-xl min-w-48 cursor-pointer"
+                <div class="grid grid-flow-row mx-4 my-3 max-w-36 p-3 border rounded-xl min-w-48 cursor-pointer"
                     (click)="productDetials(product._id)">
-                    <div class="min-h-52 w-full">
+                    <div class="min-h-36 w-full ">
                         <img class="object-fill " src={{product.images[0]}} alt="">
                     </div>
                     <div>

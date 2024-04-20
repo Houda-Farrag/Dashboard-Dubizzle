@@ -18,30 +18,29 @@ export class ProductDetailsComponent implements OnInit {
   idProduct: any
   product!: Iproduct
   subCategoryName: string = ''
-  constructor(private router: Router, private activateRouter: ActivatedRoute, private productService: ProductsService, private subCatService: SubCategoriesServiceService) {
-
+  constructor(
+    private router: Router,
+    private activateRouter: ActivatedRoute,
+    private productService: ProductsService,
+    private subCatService: SubCategoriesServiceService) {
     this.activateRouter.params.subscribe((data) => {
       this.idProduct = data
-
     })
-
   }
+
   ngOnInit(): void {
     this.productService.getProductByID(this.idProduct.idprod).subscribe((data) => {
       let prod: any = data
       this.product = prod.product
       console.log(this.product)
-
       this.subCatService.SubcategoryBehavoior.subscribe(value => {
         let [Name] = value.filter(sub => { return sub._id == this.product.subCategoryId })
         this.subCategoryName = Name.name
       })
-
     })
   }
 
   update(id: string) {
-
     this.router.navigate(["product-update", id])
   }
   delete(id: string) {

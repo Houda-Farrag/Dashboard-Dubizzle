@@ -54,10 +54,9 @@ export class UpdateProductComponent implements OnInit {
       const updatedProduct: Iproduct = { ...this.productForm.value };
 
       this.productService.updateProduct(this.productId, updatedProduct).subscribe((res) => {
-
         if (res) {
           setTimeout(() => {
-            alert("updated product")
+
           }, 1000);
           this.router.navigate(['/products']); // Redirect to the product list page
         }

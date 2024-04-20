@@ -37,6 +37,8 @@ export class AppComponent implements OnInit {
     })
   }
 
-
+  navigate(page: string) {
+    this.router.navigate([page])
+  }
 
 }

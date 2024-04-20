@@ -21,8 +21,58 @@
 </div>
 }
 @else {
+<h1 class=" font-sans text-3xl font-semibold leading-tight tracking-normal  antialiased">Main Category</h1>
+<div class="flex flex-wrap">
+    @for (category of CategoryData; track $index) {
+    <div
+        class="relative group w-96 h-96 overflow-hidden bg-black m-auto mt-20 rounded-md hover:scale-105 card-animation transition-all">
 
-<div class="">
+        <img class="object-cover w-full h-full transform duration-700 backdrop-opacity-100"
+            [src]="(category.name =='Properties')?'../../assets/propertiesimage.jpg':(category.name =='Mobile & tablets')?'../../assets/mobiletable.jpg':(category.name =='Vehicles')?'../../assets/Maintain-the-value-of-your-vehicle-scaled.jpg':''" />
+        <!-- src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=1650&q=80" -->
+        <div
+            class="absolute w-full h-full shadow-2xl opacity-20 transform duration-500 inset-y-full group-hover:-inset-y-0">
+        </div>
+        <div
+            class="absolute bg-gradient-to-t from-black w-full h-full transform duration-500 inset-y-3/4 group-hover:-inset-y-0">
+            <div class="absolute w-full flex place-content-center">
+                <p class="capitalize font-serif font-bold text-3xl text-center shadow-2xl text-white mt-10">
+                    {{category.name}}</p>
+            </div>
+            <div class="absolute w-full flex place-content-center mt-20">
+                <p class="font-sans text-center w-4/5 text-white mt-5">{{category.createdAt | date}}</p>
+            </div>
+            <button (click)="details(category._id)"
+                class="absolute left-1/4 bottom-4 bg-white text-black font-bold rounded-lg h-10 w-48 transform-gpu transition-all hover:bg-slate-600 hover:text-white hover:animate-pulse">Detials</button>
+        </div>
+    </div>
+    }
+</div>
+
+@if (SubCategoryOfCategory) {
+
+@if (SubCategoryOfCategory[0]) {
+<h1 class=" font-sans text-3xl font-semibold leading-tight tracking-normal  antialiased mt-3">sub Category</h1>
+}
+<div class="flex flex-wrap gap-3 mt-10">
+    @for (sub of SubCategoryOfCategory; track $index) {
+    <div class="h-32 w-64 relative cursor-pointer mb-5 ">
+        <div class="absolute inset-0 bg-black  opacity-25 rounded-lg shadow-2xl">
+        </div>
+        <div class="absolute inset-0 transform  hover:-translate-y-8 transition duration-300">
+            <div class="h-full w-full bg-gray-500 rounded-lg shadow-2xl text-2xl justify-center items-center flex"
+                (click)="navigate(sub._id)">
+                <app-sub-cate-card [data]="sub.name"></app-sub-cate-card>
+            </div>
+        </div>
+    </div>
+    }
+</div>
+
+
+}
+
+<!-- <div class="">
 
     <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
 
@@ -38,12 +88,7 @@
                         Id
                     </th>
 
-                    <!-- <th scope="col" class="px-6 py-3">
-                            Price
-                        </th>
-                        <th scope="col" class="px-6 py-3">
-                            Action
-                        </th> -->
+
                 </tr>
 
             </thead>
@@ -68,5 +113,6 @@
 
     </div>
 
-</div>
+</div> -->
+
 }

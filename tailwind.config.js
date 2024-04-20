@@ -4,6 +4,11 @@ module.exports = {
     "./src/**/*.{html,ts}",
     "./node_modules/flowbite/**/*.js"
   ],
+  variants: {
+    extend: {
+      inset: ["group-hover"],
+    }
+  },
   theme: {
     extend: {},
   },
@@ -12,5 +17,6 @@ module.exports = {
       charts: true,
     }),
   ],
+
 }
 
