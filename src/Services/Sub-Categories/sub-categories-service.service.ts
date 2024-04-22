@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { Isubcategory } from '../../app/Models/isubcategory';
 import { environment } from '../../environments/environment.development';
+import { observableToBeFn } from 'rxjs/internal/testing/TestScheduler';
 
 @Injectable({
   providedIn: 'root'
@@ -23,12 +24,8 @@ export class SubCategoriesServiceService {
     return this.httpclient.get<[Isubcategory]>(`${environment.EndPointUrl}sub-category`)
   }
 
-  getsubCategoryByID(id: string) {
-    this.SubcategoryBehavoior.subscribe(value => {
-      return value.map(sub => {
-        return sub._id == id
-      })
-    })
+  getsubCategoryByID(id: string): Observable<Isubcategory> {
+    return this.httpclient.get<Isubcategory>(`${environment.EndPointUrl}sub-category/getId/${id}`)
   }
 
 }

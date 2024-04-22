@@ -13,7 +13,7 @@ export class SubCategoryComponent {
   subCategoryData: any
   constructor(private subCategoryService: SubCategoriesServiceService, private router: Router) {
     this.subCategoryService.getAllSubCategories().subscribe((data) => {
-      console.log(data)
+
       this.subCategoryData = data
     })
   }

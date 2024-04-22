@@ -17,10 +17,35 @@
         </div>
     </div>
 
-
 </div>
 }
 @else {
+<!-- search -->
+<div [hidden]="!SearchProd" class="mb-5 flex w-full gap-4  pe-4">
+    <div class="w-full ">
+        <div
+            class="flex items-center p-3  bg-white rounded-xl shadow-md hover:shadow-xl transform  transition duration-500">
+            <div class="flex bg-gray-100 p-2 w-full  rounded-lg ">
+                <input class="bg-gray-100 border-none w-full" type="text" placeholder="Search by Product Name ...." />
+            </div>
+
+            <button (click)="Search($event)"
+                class="bg-gray-800 py-3 px-2 justify-between text-white flex flex-row font-semibold rounded-lg hover:shadow-lg transition duration-3000 cursor-pointer">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 mx-2 opacity-75 hover:opacity-100 " fill="none"
+                    viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                        d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+                </svg>
+            </button>
+        </div>
+    </div>
+    <div class="grid items-center min-w-28 align-middle">
+        <button (click)="SearchProd=products"
+            class="p-3 bg-gray-800 text-white rounded-md hover:text-sky-400 hover:scale-105 ">
+            All product
+        </button>
+    </div>
+</div>
 <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
     <table class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400 border">
         <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
@@ -40,7 +65,7 @@
             </tr>
         </thead>
         <tbody>
-            @for (product of products; track $index) {
+            @for (product of SearchProd; track $index) {
             <tr class="border">
                 <th scope="row "
                     class=" min-w-28 max-w-80 px-2  py-2 font-medium text-gray-900 whitespace-nowrap dark:text-white">
@@ -73,6 +98,21 @@
                     </button>
                 </td>
             </tr>
+            }@empty {
+
+            <tr class="border">
+                <th scope="row "
+                    class=" min-w-28 max-w-80 px-2  py-2 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                    <div class="w-12 h-12 border-4 border-blue-600 rounded-full loader"></div>
+                </th>
+                <td class="px-6 py-4">
+                    <div class="w-12 h-12 border-4 border-blue-600 rounded-full loader"></div>
+                </td>
+                <td class="px-6 py-4">
+                    <div class="w-12 h-12 border-4 border-blue-600 rounded-full loader"></div>
+                </td>
+            </tr>
+
             }
         </tbody>
     </table>

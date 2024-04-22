@@ -25,17 +25,17 @@ export class UserDetailsComponent {
         let uData: any = data
         let { userData } = uData
         this.userDetails = userData
-        console.log(this.userDetails)
+
       })
     })
 
     this.productServ.getAllProducts().subscribe((products) => {
       this.produtUser = products.filter((prod: Iproduct) => prod.sellerId == this.idUser)
-      console.log(this.produtUser)
+
     })
   }
   productDetials(idProd: string) {
-    console.log(idProd)
+
     this.router.navigate(["product-details", idProd])
   }
 }

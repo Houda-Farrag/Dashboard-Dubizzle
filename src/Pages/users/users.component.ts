@@ -13,13 +13,13 @@ import { ProductsService } from '../../Services/Products/products.service';
 })
 export class UsersComponent implements OnInit {
   users!: User[]
-
+  SearchUser: User[] = []
   constructor(private userService: UsersService, private router: Router, private productServ: ProductsService) {
   }
   ngOnInit(): void {
     this.userService.getAllUsers().subscribe((data) => {
       this.users = data
-      console.log(this.users)
+      this.SearchUser = this.users
     })
   }
 
@@ -28,13 +28,13 @@ export class UsersComponent implements OnInit {
     this.router.navigate(["user-details", id])
   }
   onClickDelete(id: string) {
-    console.log("id => " + id)
+
     let checkDelete = confirm("Ary you Want to Delete User with id = " + id)
     if (checkDelete) {
-      let checkAPI = this.userService.deleteUserById(id).subscribe((res) => { console.log(res); })
+      let checkAPI = this.userService.deleteUserById(id).subscribe((res) => { })
 
       this.productServ.deleteAllProductsWithIdSeller(id).subscribe(res => {
-        console.log(res);
+
       })
       this.users = this.users.filter((user) => user._id != id)
     }
@@ -45,4 +45,16 @@ export class UsersComponent implements OnInit {
     this.router.navigate(["user-update", id])
   }
 
+  Search(event: Event) {
+    this.SearchUser = []
+    let value = document.querySelector("input")?.value
+    this.users.filter(user => {
+      if (user.profile.name.toLowerCase().match(`${value?.toLowerCase()}`)) {
+        this.SearchUser.push(user)
+        return
+      }
+    })
+    console.log(this.SearchUser);
+
+  }
 }

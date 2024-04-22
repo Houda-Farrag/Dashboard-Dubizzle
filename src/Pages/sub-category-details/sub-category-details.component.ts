@@ -16,18 +16,20 @@ import { Isubcategory } from '../../app/Models/isubcategory';
 export class SubCategoryDetailsComponent {
 
   idSubCat: string = ''
+  subCatDetails!: Isubcategory
   productSubCat: Iproduct[] = []
   constructor(private activeRoute: ActivatedRoute, private productSer: ProductsService, private router: Router, private subcatServ: SubCategoriesServiceService) {
     this.activeRoute.paramMap.subscribe((param) => {
       this.idSubCat = param.get('idsub') || '0'
       this.productSubCat = this.productSer.getallProductBySubCategory(this.idSubCat)
+
+
+      this.subcatServ.getsubCategoryByID(this.idSubCat).subscribe(data => {
+        this.subCatDetails = data
+      })
+
+
     })
-
-    this.subcatServ.SubcategoryBehavoior.subscribe((allsub) => {
-
-
-    })
-
   }
 
 

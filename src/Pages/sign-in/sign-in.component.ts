@@ -12,7 +12,7 @@ import { Router } from '@angular/router';
   styleUrl: './sign-in.component.scss'
 })
 export class SignInComponent {
-
+  check: Boolean = false
   userName = ''
   password = ''
   tost: Boolean = true
@@ -49,6 +49,7 @@ export class SignInComponent {
     }
 
     if (response1 == undefined) {
+      this.check = this.adminServ.isLoged
       this.tost = false
       setTimeout(() => {
         this.tost = true

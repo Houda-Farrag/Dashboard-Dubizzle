@@ -15,28 +15,39 @@ import { Router } from '@angular/router';
   styleUrl: './properties.component.scss'
 })
 export class PropertiesComponent {
+
   product: Iproduct[] = []
+  SearchProd: Iproduct[] = []
   subcategoryOfProperties !: Isubcategory[]
   constructor(private productService: ProductsService, private subCateServ: SubCategoriesServiceService, private router: Router) {
 
     this.subCateServ.getAllSubCategories().subscribe(data => {
       this.subcategoryOfProperties = data.filter((sub: Isubcategory) => sub.categoryId.name == "Properties")
+      console.log(this.subcategoryOfProperties)
       this.subcategoryOfProperties.map((subc: Isubcategory) => {
-        console.log(subc.name.padStart(40, " "))
 
         this.productService.productsData.filter((prod) => {
           if (prod.subCategoryId == subc._id) {
             this.product.push(prod)
           }
         })
+        this.SearchProd = this.product
       })
 
     })
 
   }
   Search(event: Event) {
+    this.SearchProd = []
     let value = document.querySelector("input")?.value
-    alert(value)
+    this.product.filter(prod => {
+      if (prod.name.toLowerCase().match(`${value?.toLowerCase()}`)) {
+        this.SearchProd.push(prod)
+        return
+      }
+    })
+    console.log(this.SearchProd);
+
   }
   onClickGoToDetails(id: string) {
     this.router.navigate(["product-details", id])

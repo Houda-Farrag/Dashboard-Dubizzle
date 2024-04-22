@@ -14,12 +14,12 @@ import { Iproduct } from '../../app/Models/iproduct';
 })
 export class ProductsComponent {
   products: Iproduct[] = []
+  SearchProd: Iproduct[] = []
   constructor(private productService: ProductsService, private router: Router) {
     this.productService.getAllProducts().subscribe((data) => {
 
       this.products = data
-
-
+      this.SearchProd = this.products
     })
   }
 
@@ -41,4 +41,16 @@ export class ProductsComponent {
     this.router.navigate(["product-update", idProduct])
   }
 
+  Search(event: Event) {
+    this.SearchProd = []
+    let value = document.querySelector("input")?.value
+    this.products.filter(prod => {
+      if (prod.name.toLowerCase().match(`${value?.toLowerCase()}`)) {
+        this.SearchProd.push(prod)
+        return
+      }
+    })
+    console.log(this.SearchProd);
+
+  }
 }
